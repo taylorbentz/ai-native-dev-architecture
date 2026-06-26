@@ -1,0 +1,26 @@
+# Generated per-developer, never committed
+**/.mcp.json
+**/.claude/settings.local.json
+
+# Composed-in capabilities are local links, not committed to the hub
+hub-repository/.claude/commands/pa-*
+hub-repository/.claude/commands/pb-*
+hub-repository/.claude/rules/pa-*
+hub-repository/.claude/rules/pb-*
+
+# Tool-server virtual environments
+**/.venv/
+**/__pycache__/
+
+# Dependencies / build output
+**/node_modules/
+**/dist/
+**/build/
+**/.terraform/
+*.tfstate
+*.tfstate.*
+
+# Editor / OS noise
+.DS_Store
+.idea/
+.vscode/

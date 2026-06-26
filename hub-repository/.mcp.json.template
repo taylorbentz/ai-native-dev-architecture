@@ -1,0 +1,19 @@
+{
+  "_comment": "Recipe for local tool servers. Rendered per-developer at setup into .mcp.json (gitignored). DEVELOPER is substituted with the local username. Servers launch locally, run read-only, and carry the developer's own credentials.",
+  "mcpServers": {
+    "tickets": {
+      "command": "/home/DEVELOPER/workspace/tool-servers/tickets/.venv/bin/python",
+      "args": ["/home/DEVELOPER/workspace/tool-servers/tickets/main.py", "--read-only"],
+      "env": { "TICKETS_PROFILE": "readonly", "REGION": "us-east-1" }
+    },
+    "metrics": {
+      "command": "/home/DEVELOPER/workspace/tool-servers/metrics/.venv/bin/python",
+      "args": ["/home/DEVELOPER/workspace/tool-servers/metrics/main.py", "--read-only"],
+      "env": { "METRICS_PROFILE": "readonly", "REGION": "us-east-1" }
+    },
+    "docs-search": {
+      "command": "/home/DEVELOPER/workspace/tool-servers/docs-search/.venv/bin/docs-search-server",
+      "args": []
+    }
+  }
+}
