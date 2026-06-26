@@ -13,7 +13,7 @@ off once you have several repos.
 
 ---
 
-## Phase 0 — Prerequisites (½ day)
+## Phase 0 — Prerequisites
 
 - An AI coding assistant that supports **file-based configuration** (committed instructions, file-scoped
   rules, event hooks, and subagents). The exact product doesn't matter; the pattern is portable.
@@ -24,7 +24,7 @@ off once you have several repos.
 
 ---
 
-## Phase 1 — Capture what's already in people's heads (1–2 days, zero risk)
+## Phase 1 — Capture what's already in people's heads (zero risk)
 
 Goal: stop re-explaining the same context to the assistant in every session.
 
@@ -41,7 +41,7 @@ immediately, which builds the team's appetite for the rest.
 
 ---
 
-## Phase 2 — Turn repeated workflows into skills (2–4 days, zero risk)
+## Phase 2 — Turn repeated workflows into skills (zero risk)
 
 Goal: one-command, consistent versions of the things you do over and over.
 
@@ -58,7 +58,7 @@ skeptics.
 
 ---
 
-## Phase 3 — Add safety nets with hooks (3–5 days, HIGHER risk — test first)
+## Phase 3 — Add safety nets with hooks (HIGHER risk — test first)
 
 Goal: catch mistakes the instant they happen, deterministically, instead of relying on the model to
 remember.
@@ -84,7 +84,7 @@ stop all work — which is exactly why this phase is gated behind the additive o
 
 ---
 
-## Phase 4 — Go multi-repo: the hub and composition (1 week, medium risk)
+## Phase 4 — Go multi-repo: the hub and composition (medium risk)
 
 Only do this once you have several repos worth governing together.
 
@@ -104,7 +104,7 @@ can drift). If you vendor, add a periodic check that flags divergence.
 
 ---
 
-## Phase 5 — Connect live systems with local tool servers (varies, medium risk)
+## Phase 5 — Connect live systems with local tool servers (medium risk)
 
 Goal: let the assistant read real state (tickets, metrics, docs) safely.
 
@@ -133,14 +133,20 @@ Goal: let the configuration evolve safely, and let safe work happen unattended.
 
 ---
 
-## A realistic timeline
+## The progression
 
-| Week | Phases | You'll feel |
-|---|---|---|
-| 1 | 1–2 | "The assistant finally understands our repo and our workflows." |
-| 2 | 3 | "It catches my mistakes before the build does." |
-| 3–4 | 4–5 | "One launch point, every repo, live system state — safely." |
-| Ongoing | 6 | "The setup improves itself, and routine triage runs without me." |
+Each phase delivers something you can feel before the next begins. The pace depends on your team's size
+and the complexity of your estate, so treat these as an order, not a schedule.
 
-Start at Phase 1 this week. Don't jump to hooks or the hub until the additive layers are paying off —
-the ordering *is* the method.
+| Phases | What changes for the team |
+|---|---|
+| 1–2 | The assistant understands your repo and runs your common workflows the same way every time. |
+| 3 | It catches mistakes the moment they happen, instead of at build time. |
+| 4–5 | One launch point covers every repo, with safe access to live system state. |
+| 6 | The setup improves itself through review, and safe routine work can run unattended. |
+
+Start at Phase 1. Don't jump to hooks or the hub until the additive layers are paying off — the
+ordering *is* the method.
+
+Once you reach Phase 4, see [`WORKFLOW.md`](WORKFLOW.md) for what the resulting day-to-day cycle looks
+like for an engineer.

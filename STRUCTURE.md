@@ -67,7 +67,7 @@ It also contains the documentation set, which is the heart of the article:
 
 ```
 hub-repository/docs/ai-engineering/
-├── architecture-narrative.md      the "what & why" — eight distinctive attributes
+├── architecture-narrative.md      how the architecture works and why, in plain terms
 ├── repository-structure.md        per-directory design rationale + Mermaid diagram
 ├── prompts/
 │   └── phase-rollout-prompt.md     a reusable prompt for rolling out config changes

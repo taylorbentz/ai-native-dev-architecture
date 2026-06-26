@@ -48,10 +48,11 @@ here as plain folders so the whole pattern can be read in one place.
 
 | If you want to… | Read |
 |---|---|
-| Understand the *what & why* | [`architecture-narrative.md`](hub-repository/docs/ai-engineering/architecture-narrative.md) — eight distinctive attributes |
+| Understand *how it works and why*, in plain terms | [`architecture-narrative.md`](hub-repository/docs/ai-engineering/architecture-narrative.md) |
+| See what a *day of development* actually looks like | [`WORKFLOW.md`](WORKFLOW.md) |
+| **Actually adopt this on your team** | [`IMPLEMENTATION.md`](IMPLEMENTATION.md) — a phased, low-risk-first rollout |
 | See the *full annotated file tree* | [`STRUCTURE.md`](STRUCTURE.md) |
 | Understand each directory's *design rationale* | [`repository-structure.md`](hub-repository/docs/ai-engineering/repository-structure.md) |
-| **Actually adopt this on your team** | [`IMPLEMENTATION.md`](IMPLEMENTATION.md) — a phased, low-risk-first rollout |
 
 ## License
 
