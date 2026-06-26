@@ -44,9 +44,14 @@ here as plain folders so the whole pattern can be read in one place.
   python      terraform           api          infra         frontend
 ```
 
-See [`hub-repository/docs/ai-engineering/architecture-narrative.md`](hub-repository/docs/ai-engineering/architecture-narrative.md)
-for the full narrative and [`repository-structure.md`](hub-repository/docs/ai-engineering/repository-structure.md)
-for the annotated file trees.
+## Where to go next
+
+| If you want to… | Read |
+|---|---|
+| Understand the *what & why* | [`architecture-narrative.md`](hub-repository/docs/ai-engineering/architecture-narrative.md) — eight distinctive attributes |
+| See the *full annotated file tree* | [`STRUCTURE.md`](STRUCTURE.md) |
+| Understand each directory's *design rationale* | [`repository-structure.md`](hub-repository/docs/ai-engineering/repository-structure.md) |
+| **Actually adopt this on your team** | [`IMPLEMENTATION.md`](IMPLEMENTATION.md) — a phased, low-risk-first rollout |
 
 ## License
 
