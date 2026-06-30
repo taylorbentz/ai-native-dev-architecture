@@ -32,11 +32,14 @@ claude-governance/
 │   ├── .claude-plugin/plugin.json    plugin manifest (name, version)
 │   ├── commands/                     shared skills: ship, oncall, setup
 │   ├── agents/                       shared subagents: sql-reviewer, infra-diagnostician
-│   ├── hooks/                        safety hooks: session-start, validate-cwd, etc.
+│   ├── hooks/                        generic safety hooks (validate-cwd, validate-style, …) + hooks.json
 │   ├── rules/                        cross-cutting rules: data-handling, commit-style, governance
 │   ├── skills/improve-assistant/     the meta-skill: the one sanctioned way to change this repo
 │   └── .mcp.json.template            tool-server recipe, rendered per-developer at setup
-├── estate/estate-map.json            the assembled, estate-wide view (irreducible)
+├── estate/
+│   ├── estate-map.json               the assembled, estate-wide view (irreducible)
+│   ├── repo-manifest.schema.md       the interface each repo implements
+│   └── validate-estate-map.sh        CI check: map and repo manifests must agree
 └── docs/ai-engineering/              the design narrative, workflow, and rationale
 ```
 

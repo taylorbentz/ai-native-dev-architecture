@@ -104,7 +104,10 @@ now splits into two repos with distinct jobs.
    one artifact that can't live in any single repo: every repo, how each deploys, the cross-account
    credential map, and the dependency edges between repos. Have each product repo declare its own facts
    in a [`repo-manifest.json`](claude-governance/estate/repo-manifest.schema.md); the estate map is their
-   aggregation.
+   aggregation. Add a CI check
+   ([`validate-estate-map.sh`](claude-governance/estate/validate-estate-map.sh)) so the map and the
+   manifests can't silently drift apart — that's the one consistency risk this split introduces, and a
+   five-second check removes it.
 
 3. **Make a launch-point repo** ([`projects/`](projects/)) — neutral ground developers work from. It
    holds stateful projects and a `session-start` hook that pulls the latest governance and loads the

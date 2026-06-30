@@ -61,7 +61,8 @@ claude-governance/
 │   └── .mcp.json.template                tool-server recipe, rendered per-developer at setup
 ├── estate/
 │   ├── estate-map.json                   the assembled, estate-wide view (irreducible)
-│   └── repo-manifest.schema.md           the interface each repo implements
+│   ├── repo-manifest.schema.md           the interface each repo implements
+│   └── validate-estate-map.sh            CI check: map and repo manifests must agree
 └── docs/ai-engineering/                  the design narrative, workflow, and rationale
     ├── architecture-narrative.md
     ├── repository-structure.md

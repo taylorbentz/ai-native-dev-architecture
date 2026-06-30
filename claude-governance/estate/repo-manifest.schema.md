@@ -44,3 +44,13 @@ Previously, shared behavior was hand-distributed (symlinks, copies) and the assi
 knowledge of each repo. Now: shared behavior is a **plugin**, and repo-specific knowledge is **declared
 by the repo** through this manifest. Generic capability + declared facts = no central list to maintain,
 and no drift.
+
+## Keeping the map and the manifests in agreement
+
+Splitting the facts (per-repo manifests) from the assembled view (the estate map) introduces one risk:
+a repo updates its manifest and the map is not updated to match, or vice versa. The check
+[`validate-estate-map.sh`](validate-estate-map.sh) catches exactly that — it compares every map row
+against the matching `repo-manifest.json` and flags any disagreement, any map row with no manifest, and
+any manifest with no map row. Run it before committing a manifest change, and in the governance repo's
+CI. In this illustration the repos sit side by side; in real life, point `WORKSPACE_ROOT` at wherever
+they're checked out.
