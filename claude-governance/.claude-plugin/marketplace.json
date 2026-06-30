@@ -1,0 +1,11 @@
+{
+  "name": "team-marketplace",
+  "owner": { "name": "Platform Team" },
+  "plugins": [
+    {
+      "name": "team-governance",
+      "source": "./plugin",
+      "description": "Shared team capabilities, safety hooks, and cross-cutting rules."
+    }
+  ]
+}

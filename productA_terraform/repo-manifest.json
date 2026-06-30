@@ -1,0 +1,10 @@
+{
+  "name": "productA_terraform",
+  "capability": "ProductA infrastructure + IAM roles",
+  "stack": "terraform",
+  "branch_model": "dev-then-trunk",
+  "main_push_deploys_to": "app_prod",
+  "verify": "terraform fmt -check && terraform validate",
+  "depends_on": ["productA_python"],
+  "provides_to": ["productB_api"]
+}

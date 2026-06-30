@@ -3,8 +3,11 @@
 # delivery flow doesn't silently leave changes behind.
 set -euo pipefail
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-WS_ROOT="$(cd "$SCRIPT_DIR/../../.." && pwd)"
+# This hook ships in a plugin installed OUTSIDE the workspace, so it cannot locate repos
+# relative to its own path. The workspace is the parent of the launch-point (projects) repo,
+# which the harness exposes as CLAUDE_PROJECT_DIR.
+PROJECT_DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
+WS_ROOT="$(cd "$PROJECT_DIR/.." && pwd)"
 
 DIRTY=""
 for path in "$WS_ROOT"/*/; do

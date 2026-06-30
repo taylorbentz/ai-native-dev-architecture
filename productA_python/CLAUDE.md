@@ -1,6 +1,8 @@
 # productA_python
 
-A Python data pipeline. Owns its own assistant capabilities in `.claude/`; the hub links them up.
+A Python data pipeline. Owns its own assistant capabilities in `.claude/` and declares its facts in
+[`repo-manifest.json`](repo-manifest.json). Shared, team-wide capability comes from the governance
+plugin; this repo only holds what is specific to it.
 
 - **Build/verify:** `pytest`
 - **Branch model:** trunk

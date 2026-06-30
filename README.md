@@ -1,7 +1,8 @@
 # AI-Native Development Architecture (Illustrative)
 
-A reference layout for running an AI coding assistant as **version-controlled infrastructure** across a
-polyrepo — many independent repositories governed from one control plane.
+A reference layout for running an AI coding assistant as **version-controlled infrastructure** across
+many repositories — shared capability distributed as a plugin, governed in one place, and used from one
+consistent launch point.
 
 > **This is an illustration.** Every repo, skill, rule, and hook here is invented for teaching.
 > It accompanies a write-up on treating your AI assistant's configuration as code. Nothing here is
@@ -12,47 +13,56 @@ polyrepo — many independent repositories governed from one control plane.
 In real life, each top-level directory below would be its **own** git repository. They're collected
 here as plain folders so the whole pattern can be read in one place.
 
-| Directory | Stands for | Stack |
+| Directory | Stands for | Role |
 |---|---|---|
-| `hub-repository/` | The control plane + single launch point | docs + config only |
-| `productA_python/` | A Python service / data pipeline | Python |
-| `productA_terraform/` | ProductA's infrastructure-as-code | Terraform |
-| `productB_api/` | ProductB's backend API | TypeScript |
-| `productB_infra/` | ProductB's infrastructure-as-code | Terraform |
-| `productB_frontend/` | ProductB's web UI | TypeScript/React |
+| `claude-governance/` | Reviewed home for shared capability + the estate map | authored, not launched from |
+| `projects/` | The neutral launch point developers work from | holds stateful projects |
+| `productA_python/` | A Python service / data pipeline | product repo |
+| `productA_terraform/` | ProductA's infrastructure-as-code | product repo |
+| `productB_api/` | ProductB's backend API | product repo |
+| `productB_infra/` | ProductB's infrastructure-as-code | product repo |
+| `productB_frontend/` | ProductB's web UI | product repo |
 
 ## The core idea
 
-- **One launch point.** A developer (or an unattended agent) starts the assistant from the **hub**,
-  regardless of which repo they're editing.
-- **Federated authoring.** Each product repo owns the skills/rules/hooks that fit *its* code, in its
-  own `.claude/` directory.
-- **Centralized composition.** A setup step links each repo's capabilities *up* into the hub, tagged
-  with a provenance prefix (`pa-`, `pb-`) so you can always tell who owns what.
-- **Configuration as code.** Skills, rules, hooks, agents, and settings are committed files — reviewed,
-  diffed, and shared like any other code.
+- **Shared capability is a plugin.** The skills, agents, hooks, and rules the whole team relies on live
+  in `claude-governance/` and ship as a versioned plugin. Enable it once; updates reach everyone. No
+  copying, no symlinks, no drift.
+- **Each repo declares its own facts.** A `repo-manifest.json` in each product repo states how it builds,
+  how it deploys, and what it depends on. Generic shared capability reads those facts instead of
+  hard-coding them.
+- **One thing can't decentralize: the estate map.** `claude-governance/estate/estate-map.json` is the
+  assembled view of every repo and how they connect. It can't live in any single repo, and a generic
+  plugin can't carry it — so it has one governed home.
+- **Developers launch from one neutral place.** Work starts in `projects/`, not in a product repo. A
+  change usually spans several repos and there's no single "right" one to start from. Stateful projects
+  live here too, so work is findable and resumable.
 
 ```
-            ┌─────────────────────────────┐
-            │       hub-repository         │  ← launch the assistant here
-            │  .claude/  +  docs/          │
-            └──────────────┬───────────────┘
-              reaches down  │  ▲  capabilities linked up
-              to do work    ▼  │  (pa-* , pb-*)
-   ┌────────────┬───────────┴───────┬────────────┬──────────────┐
- productA_    productA_         productB_     productB_      productB_
-  python      terraform           api          infra         frontend
+        ┌──────────────────────────┐        ┌──────────────────────────┐
+        │     claude-governance     │        │         projects          │
+        │  • shared plugin (skills, │        │  • where developers launch │
+        │    hooks, rules, agents)  │        │  • stateful projects:      │
+        │  • estate map (the one    │──────► │    research → prompts →    │
+        │    cross-cutting artifact)│ plugin │    progress.log            │
+        └──────────────────────────┘ + map  └────────────┬──────────────┘
+                                                          │ assembles a working set
+                                                          ▼ from the estate map
+        ┌───────────┬───────────────┬───────────┬────────────┬──────────────┐
+      productA_    productA_     productB_   productB_    productB_
+       python      terraform        api        infra       frontend
+        (each owns its own .claude/ + declares repo-manifest.json)
 ```
 
 ## Where to go next
 
 | If you want to… | Read |
 |---|---|
-| Understand *how it works and why*, in plain terms | [`architecture-narrative.md`](hub-repository/docs/ai-engineering/architecture-narrative.md) |
+| Understand *how it works and why*, in plain terms | [`architecture-narrative.md`](claude-governance/docs/ai-engineering/architecture-narrative.md) |
 | See what a *day of development* actually looks like | [`WORKFLOW.md`](WORKFLOW.md) |
 | **Actually adopt this on your team** | [`IMPLEMENTATION.md`](IMPLEMENTATION.md) — a phased, low-risk-first rollout |
 | See the *full annotated file tree* | [`STRUCTURE.md`](STRUCTURE.md) |
-| Understand each directory's *design rationale* | [`repository-structure.md`](hub-repository/docs/ai-engineering/repository-structure.md) |
+| Understand each directory's *design rationale* | [`repository-structure.md`](claude-governance/docs/ai-engineering/repository-structure.md) |
 
 ## License
 

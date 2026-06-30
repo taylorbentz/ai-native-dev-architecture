@@ -1,6 +1,6 @@
 #!/bin/bash
 # PreToolUse (Bash) hook: blocks repo-modifying git commands that don't target a
-# directory with `git -C`. Prevents committing to the wrong repo from the hub.
+# directory with `git -C`. Prevents committing to the wrong repo when one session spans many.
 set -euo pipefail
 
 INPUT="$(cat)"

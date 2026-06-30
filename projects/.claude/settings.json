@@ -1,0 +1,25 @@
+{
+  "_comment": "Settings for the projects (launch-point) repo. The shared safety hooks (PreToolUse/PostToolUse/Stop) come from the governance plugin. This file only wires the launch-point's own SessionStart hook, which pulls the latest governance and loads the estate map.",
+  "permissions": {
+    "allow": [
+      "Read",
+      "Edit",
+      "Write",
+      "Bash(git -C *)",
+      "Bash(ls *)",
+      "Bash(grep *)",
+      "Bash(find *)"
+    ],
+    "deny": []
+  },
+  "hooks": {
+    "SessionStart": [
+      {
+        "matcher": "startup|resume|clear",
+        "hooks": [
+          { "type": "command", "command": ".claude/hooks/session-start.sh", "timeout": 30 }
+        ]
+      }
+    ]
+  }
+}

@@ -9,7 +9,8 @@ allowed-tools: >
 
 # /etl-validate — Validate an ETL Module
 
-Composed into the hub as `pa-etl-validate`.
+This skill lives in the repo it serves. The assistant picks it up when this repo is in the working set —
+no copying or linking into a central location.
 
 ## Procedure
 

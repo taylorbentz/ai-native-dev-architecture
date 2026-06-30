@@ -1,0 +1,8 @@
+# Progress log — example-cross-repo-rollout
+# Append-only. One entry per working session. The durable record of cross-repo state.
+
+2026-01-01  Project created. Research complete: capability cascades across 4 repos
+            (terraform -> python -> api -> frontend). Phased prompts written.
+2026-01-02  Phase 1 started. productA_terraform: data role added on dev, review opened (#) —
+            awaiting approval before promotion. productA_python: pipeline logic shipped to
+            staging, rollup data populating. Next: promote infra, then start Phase 2.

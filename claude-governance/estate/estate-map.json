@@ -1,0 +1,65 @@
+{
+  "_comment": "The estate map: the one artifact that genuinely cannot live in any single repo or a generic plugin. It is the assembled view of every repo, how each deploys, and how they depend on one another. The assistant reads this to (1) discover which repo holds a capability, (2) assemble a per-project working set, and (3) know the safety meaning of an action in each repo. Each repo's row mirrors what that repo declares in its own repo-manifest.json — this file is the aggregation.",
+
+  "environments": {
+    "_comment": "Cross-account credential map — spans more than one cloud account family, so no single repo owns it.",
+    "app_staging":   { "profile": "app-staging-readonly",  "account": "ACCOUNT_A_STAGING" },
+    "app_prod":      { "profile": "app-prod-readonly",     "account": "ACCOUNT_A_PROD" },
+    "data_staging":  { "profile": "data-staging-readonly", "account": "ACCOUNT_B_STAGING" },
+    "data_prod":     { "profile": "data-prod-readonly",    "account": "ACCOUNT_B_PROD" }
+  },
+
+  "repos": [
+    {
+      "name": "productA_python",
+      "capability": "data pipeline / Python role logic",
+      "stack": "python",
+      "branch_model": "trunk",
+      "main_push_deploys_to": "app_staging",
+      "depends_on": [],
+      "provides_to": ["productA_terraform"]
+    },
+    {
+      "name": "productA_terraform",
+      "capability": "ProductA infrastructure + IAM roles",
+      "stack": "terraform",
+      "branch_model": "dev-then-trunk",
+      "main_push_deploys_to": "app_prod",
+      "depends_on": ["productA_python"],
+      "provides_to": ["productB_api"]
+    },
+    {
+      "name": "productB_api",
+      "capability": "backend API + data transformations",
+      "stack": "typescript",
+      "branch_model": "trunk",
+      "main_push_deploys_to": "data_staging",
+      "depends_on": ["productA_terraform"],
+      "provides_to": ["productB_frontend"]
+    },
+    {
+      "name": "productB_infra",
+      "capability": "ProductB infrastructure",
+      "stack": "terraform",
+      "branch_model": "dev-then-trunk",
+      "main_push_deploys_to": "data_prod",
+      "depends_on": ["productB_api"],
+      "provides_to": []
+    },
+    {
+      "name": "productB_frontend",
+      "capability": "web UI / reporting surface",
+      "stack": "typescript-react",
+      "branch_model": "trunk",
+      "main_push_deploys_to": "data_staging",
+      "depends_on": ["productB_api"],
+      "provides_to": []
+    }
+  ],
+
+  "branch_model_semantics": {
+    "_comment": "Why a push means different things in different repos — the safety taxonomy a coordinating session needs loaded for ALL repos at once.",
+    "trunk": "A push to the main branch deploys to STAGING only; production is gated by a separate manual approval. Pushing is safe any day.",
+    "dev-then-trunk": "main IS production. A direct push to main is a production deploy. The sanctioned path is promotion from dev after review + staging validation."
+  }
+}

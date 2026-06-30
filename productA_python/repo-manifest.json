@@ -1,0 +1,10 @@
+{
+  "name": "productA_python",
+  "capability": "data pipeline / Python role logic",
+  "stack": "python",
+  "branch_model": "trunk",
+  "main_push_deploys_to": "app_staging",
+  "verify": "pytest",
+  "depends_on": [],
+  "provides_to": ["productA_terraform"]
+}

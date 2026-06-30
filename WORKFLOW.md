@@ -8,30 +8,33 @@ setup. The earlier documents explain the design. This one is the lived experienc
 An engineer does not navigate to a folder and remember a launch command. They type one short word.
 
 During first-time setup they add a small shortcut to their shell, named something like `dev`, that
-moves into the hub repository and starts the assistant there. The name does not matter. The habit does.
-From that point on, starting work is a single word, and it always begins in the same place. Because the
-assistant always starts from the hub, it always starts with the same reviewed configuration, no matter
-which project the day's work is in.
+moves into the projects repo and starts the assistant there. The name does not matter. The habit does.
+From that point on, starting work is a single word, and it always begins in the same place. The projects
+repo is neutral ground — not any one product's code — so it is the natural home no matter which repos
+the day's work will touch. Because every session starts there, it starts with the same shared, reviewed
+capability, delivered by the governance plugin.
 
 ## What happens the moment a session begins
 
 Before the engineer types anything, the session has already prepared itself. A check runs automatically
-at startup and does two things. First, it pulls the latest version of the repositories, so the newest
-shared skills and rules are present from the very first message. An improvement someone merged
-yesterday is simply there today, with nothing to install. Second, it reports the real state of the
-work: which branch each repository is on, whether anything is unsaved, whether the team has agreed not
-to release today. The engineer starts already oriented, rather than discovering a surprise halfway
-through.
+at startup and does three things. First, it pulls the latest shared governance, so the newest skills and
+rules are present from the very first message. An improvement someone merged yesterday is simply there
+today, with nothing to install. Second, it loads the estate map — the description of every repo and how
+they connect — so the assistant can later work out which repos a task will touch. Third, it reports the
+real state of the work: which branch each repository is on, whether anything is unsaved. The engineer
+starts already oriented, rather than discovering a surprise halfway through.
 
 ## Starting a piece of work as a project
 
 Larger work is treated as a small project with its own folder, and it follows a rhythm of research,
 then planning, then supervised execution.
 
-The engineer makes a folder for the work under the documentation area, with a place for research and a
-place for plans. They ask the assistant to research the problem, and it writes up what it finds in the
-research folder: how the relevant code works today, what will have to change, what the risks are. The
-engineer reads it and corrects course while the cost of changing direction is still low.
+The engineer makes a folder for the work in the projects repo, with a place for research and a place for
+plans. They ask the assistant to research the problem, and it writes up what it finds in the research
+folder: how the relevant code works today, which repos will have to change and in what order, what the
+risks are. Because the project has a fixed, known home, anyone on the team can later find it, see its
+state, and pick it up — project information stops scattering across random repos. The engineer reads the
+research and corrects course while the cost of changing direction is still low.
 
 With the research settled, they ask the assistant to break the work into phases and write a separate
 prompt for each phase, saved in the plans folder. Each prompt is a self-contained instruction for one
@@ -96,9 +99,10 @@ configuration.
 
 All of this rests on a one-time setup that a new engineer runs once.
 
-They clone the repositories, start the assistant from the hub, and run the setup step. That step
-prepares their machine: it gives them the access their role calls for, it connects the tools the
-assistant uses to read live information, and it gathers every repository's instructions into the hub so
-they are available from the one starting point. After that, the daily rhythm takes over, and the
-startup check keeps each session current on its own. Setup is a one-time cost. Staying current is free,
-and automatic.
+They clone the repositories, start the assistant from the projects repo, and run the setup step. That
+step prepares their machine: it gives them the access their role calls for, it enables the shared
+governance plugin so every session has the team's reviewed capability, and it connects the tools the
+assistant uses to read live information. Repo-specific instructions stay in their own repos and are
+picked up when those repos are in play; nothing is gathered into one place by hand. After that, the
+daily rhythm takes over, and the startup check keeps each session current on its own. Setup is a
+one-time cost. Staying current is free, and automatic.

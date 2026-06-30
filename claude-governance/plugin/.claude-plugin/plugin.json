@@ -1,0 +1,6 @@
+{
+  "name": "team-governance",
+  "description": "Shared, reviewed team capabilities: delivery, triage, setup, code-quality agents, safety hooks, and cross-cutting rules. Installed into every developer's environment so behavior is consistent and updates ship to everyone at once.",
+  "version": "1.0.0",
+  "author": { "name": "Platform Team" }
+}

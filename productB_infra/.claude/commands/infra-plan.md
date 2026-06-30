@@ -9,7 +9,8 @@ allowed-tools: >
 
 # /infra-plan — Plan & Explain
 
-Composed into the hub as `pb-infra-plan`.
+This skill lives in the repo it serves. The assistant picks it up when this repo is in the working set —
+no copying or linking into a central location.
 
 ## Procedure
 

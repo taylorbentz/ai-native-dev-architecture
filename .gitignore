@@ -2,11 +2,8 @@
 **/.mcp.json
 **/.claude/settings.local.json
 
-# Composed-in capabilities are local links, not committed to the hub
-hub-repository/.claude/commands/pa-*
-hub-repository/.claude/commands/pb-*
-hub-repository/.claude/rules/pa-*
-hub-repository/.claude/rules/pb-*
+# Shared capability is installed as a versioned plugin, not copied/linked per repo —
+# so there are no composed-in files to ignore here anymore.
 
 # Tool-server virtual environments
 **/.venv/
